@@ -1,0 +1,6 @@
+[0912/153712.427:ERROR:file_io_win.cc(180)] CreateFile C:\Users\penbridge\AppData\Local\BraveSoftware\Brave-Browser\User Data\Crashpad\settings.dat: Access is denied. (0x5)
+[0912/153712.433:ERROR:registration_protocol_win.cc(131)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0912/153712.436:ERROR:file_io_win.cc(180)] CreateFile C:\Users\penbridge\AppData\Local\BraveSoftware\Brave-Browser\User Data\Crashpad\settings.dat: Access is denied. (0x5)
+[0912/154708.168:ERROR:file_io_win.cc(180)] CreateFile C:\Users\penbridge\AppData\Local\BraveSoftware\Brave-Browser\User Data\Crashpad\settings.dat: Access is denied. (0x5)
+[0912/154708.173:ERROR:registration_protocol_win.cc(131)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0912/154708.176:ERROR:file_io_win.cc(180)] CreateFile C:\Users\penbridge\AppData\Local\BraveSoftware\Brave-Browser\User Data\Crashpad\settings.dat: Access is denied. (0x5)

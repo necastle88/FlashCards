@@ -30,7 +30,7 @@ const DeleteFlyOut = ({ cardId, exitMenu }) => {
 const styles = StyleSheet.create({
   cardBackground: {
     flexDirection: 'row',
-    width: 380,
+    width: 330,
     height: 80,
     borderRadius: 4,
     backgroundColor: '#c80815',

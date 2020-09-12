@@ -33,9 +33,12 @@ const Card = ({ cardTitle, numberOfCards, cardId }) => {
           <Text style={styles.subHead}>{numberOfCards ? numberOfCards : '0'} Cards</Text>
         </View>
         <View style={{ marginTop: 16, marginRight: 7 }}>
-          <TouchableOpacity onPress={() => onPressHandler()}>
+          {!isOpen ? 
+            <TouchableOpacity onPress={() => onPressHandler()}>
             <Feather name="more-vertical" size={24} color="black" />
           </TouchableOpacity>
+        : null
+      }
         </View>
         {isOpen ? 
         <View style={{ elevation: 5, marginLeft: -400}}>
@@ -51,7 +54,7 @@ const Card = ({ cardTitle, numberOfCards, cardId }) => {
 const styles = StyleSheet.create({
   cardBackground: {
     flexDirection: 'row',
-    width: 380,
+    width: 330,
     height: 80,
     borderRadius: 4,
     backgroundColor: 'white',
