@@ -3,21 +3,15 @@ const data = [
     name: 'Deck One',
     cards: [
         {
-          id: 1,
           question: ` What is the Capital Of India ?`,
-          options: [`True`, `False`],
           answer: `New Delhi`
         },
         {
-          id: 2,
           question: ` What is the Capital Of India ?`,
-          options: [`True`, `False`],
           answer: `New Delhi`
         },
         {
-          id: 3,
           question: ` What is the Capital Of India ?`,
-          options: [`True`, `False`],
           answer: `New Delhi`
         }
       ]
@@ -26,28 +20,20 @@ const data = [
     name: 'Deck two',
     cards: [
         {
-          id: 1,
           question: ` What is the Capital Of India ?`,
-          options: [`True`, `False`],
           answer: `New Delhi`
         },
         {
-          id: 2,
           question: ` What is the Capital Of India ?`,
           options: [`True`, `False`],
+        },
+        {
+          question: ` What is the Capital Of India ?`,
           answer: `New Delhi`
         },
         {
-          id: 3,
           question: ` What is the Capital Of India ?`,
           options: [`True`, `False`],
-          answer: `New Delhi`
-        },
-        {
-          id: 4,
-          question: ` What is the Capital Of India ?`,
-          options: [`True`, `False`],
-          answer: `New Delhi`
         }
       ]
   },

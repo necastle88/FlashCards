@@ -9,7 +9,6 @@ const DeckDetails = ({navigation}) => {
 
   const route = useRoute();
   const cardId = route.params.id;
-  console.log(route.params.deckCards)
 
   return(
     <View style={{top: 0 }}>
@@ -23,7 +22,8 @@ const DeckDetails = ({navigation}) => {
             <Text style={{color: 'white'}}>Add Question</Text>
           </View>
          </TouchableNativeFeedback> 
-         <TouchableNativeFeedback onPress={() => navigation.navigate('Quiz')}> 
+         <TouchableNativeFeedback onPress={() => navigation.navigate('Quiz',{
+         deckcards: route.params.deckCards})}> 
           <View style={styles.startQuizBtn}>
             <Text style={{color: 'white'}}>Start Quiz</Text>
           </View>
