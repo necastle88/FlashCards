@@ -9,9 +9,13 @@ import {
 } from 'react-native'
 import { Feather } from '@expo/vector-icons';
 import DeleteFlyOut from './DeleteFlyOut';
+import { useNavigation } from '@react-navigation/native';
 
-const Card = ({ cardTitle, numberOfCards, cardId }) => {
+
+const Deck = ({ cardTitle, numberOfCards, cardId, cards }) => {
   const [isOpen, setIsOpen] = React.useState(false)
+
+  const navigation = useNavigation();
 
   if (cardTitle.length > 32) {
     cardTitle = `${cardTitle.slice(0, 32)}...`
@@ -25,8 +29,15 @@ const Card = ({ cardTitle, numberOfCards, cardId }) => {
     }
   }
   
+
+
   return(
-    <TouchableNativeFeedback onPress={() => alert('test')}>
+    <TouchableNativeFeedback onPress={() => navigation.navigate('Deck Details', {
+        id: cardId,
+        deckName: cardTitle,
+        deckCards: cards
+    })
+  }>
       <View style={styles.cardBackground} >
         <View style={{ justifyContent: 'center'}}>
           <Text style={styles.cardTitle}>{cardTitle}</Text>
@@ -71,12 +82,12 @@ const styles = StyleSheet.create({
   cardTitle: {
     fontSize: 21,
     fontWeight: "bold",
-    color: '#232F34',
+    color: '#2C3531',
     marginBottom: 1
   },
   subHead: {
     fontSize: 14,
-    color: '#232F34',
+    color: '#2C3531',
     opacity: .9
   },
   moreButton: {
@@ -84,4 +95,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default Card;
+export default Deck;
