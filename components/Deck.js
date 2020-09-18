@@ -53,7 +53,7 @@ const Deck = ({ cardTitle, numberOfCards, cardId, cards }) => {
         </View>
         {isOpen ? 
         <View style={{ elevation: 5, marginLeft: -400}}>
-          <DeleteFlyOut id={cardId} exitMenu={onPressHandler} /> 
+          <DeleteFlyOut cardId={cardId} exitMenu={onPressHandler} /> 
         </View>
         : null}
       </View>

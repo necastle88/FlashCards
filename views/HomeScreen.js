@@ -1,20 +1,18 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import Header from '../components/Header';
 import Deck from '../components/Deck';
 import { connect } from 'react-redux';
 
-const HomeScreen = ({ navigation, state }) => {
+const HomeScreen = ({ state }) => {
   const data = Object.values(state.addDeckReducer.flashCards)
-  console.log(state)
 
   return(
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-start', marginTop: 10 }}>
-      <Text style={styles.cardCountText}>99 Decks</Text>
+      <Text style={styles.cardCountText}>{`${data.length === 1 ? `${data.length} Deck` : `${data.length} Decks`}`}</Text>
       {state.flashCards === null ? 
         <Text>Click add from below to create a new deck</Text>
         : data.map((deck, index) => {
-        return <Deck key={`${deck.name}_${index}`} cardTitle={deck.name} numberOfCards={deck.cards.length} cards={deck.cards}/>
+        return <Deck key={`${deck.name}_${index}`} cardTitle={deck.name} numberOfCards={deck.cards.length} cards={deck.cards} cardId={index}/>
       })
     }
     </View>

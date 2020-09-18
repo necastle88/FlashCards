@@ -30,6 +30,7 @@ const initialState = {
 }
 
 const addDeckReducer = (state = initialState, action) => {
+  console.log(action.type)
   switch (action.type) {
     case ADD_DECK:
       return Object.assign({}, state, {
@@ -38,7 +39,7 @@ const addDeckReducer = (state = initialState, action) => {
       case DELETE_DECK:
         return {
           ...state,
-          items: state.items.filter((item, index) => index !== action.payload)
+          flashCards: state.flashCards.filter((item, index) => index !== action.payload)
         }
     default:
       return state;

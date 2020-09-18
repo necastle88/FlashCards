@@ -5,19 +5,28 @@ import {
   Text,
   TouchableNativeFeedback,
   TouchableOpacity,
-  Image
+  
 } from 'react-native'
 
+import { connect } from 'react-redux'
 import { Feather } from '@expo/vector-icons'; 
 
-const DeleteFlyOut = ({ cardId, exitMenu }) => {
+import { deleteDeck } from '../redux/actions/index';
+
+const DeleteFlyOut = ({ cardId, exitMenu, dispatch }) => {
+  console.log(cardId)
+  const deleteDeckHandler = () => {
+    dispatch(deleteDeck(cardId))
+    exitMenu()
+  }
+
   return(
-    <TouchableNativeFeedback onPress={() => alert('delete')}>
+    <TouchableNativeFeedback onPress={deleteDeckHandler}>
       <View style={styles.cardBackground} >
         <View style={{ justifyContent: 'center'}}>
           <Text style={styles.subHead}>Delete</Text>
         </View>
-        <View style={{ marginTop: 10, marginRight: 8}}>
+        <View style={{ width: 24, height: 24, marginTop: 10, marginRight: 8}}>
           <TouchableOpacity onPress={exitMenu}>
             <Feather name="x-circle" size={24} color="white" />       
           </TouchableOpacity>
@@ -52,4 +61,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default DeleteFlyOut;
+export default connect(null, null)(DeleteFlyOut);
