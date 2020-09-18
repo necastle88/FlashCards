@@ -5,10 +5,13 @@ import { useRoute } from '@react-navigation/native';
 
 const QuizView = ({ navigation }) => {
   const [isAnswerVisible, setIsAnswerVisible] = React.useState(false);
+  const [state, setState] = React.useState({
+    questionNumber: 0
+  })
 
   const route = useRoute();
-  const cards = route.params.deckcards;
-  const cardsLength = cards.length;
+ /*  const cards = route.params.deckcards;
+  const cardsLength = cards.length; */
   return(
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>{`0/${cardsLength}`}</Text>

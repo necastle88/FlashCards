@@ -1,10 +1,17 @@
 import React from 'react';
+import { connect } from 'react-redux'
 import { StyleSheet, Text, View, TouchableNativeFeedback, TextInput } from 'react-native';
+import { addDeck } from '../redux/actions/index';
 
-import Header from '../components/Header';
 
-const newDeckView = ({ navigation }) => {
-  const [value, onChangeText] = React.useState('');
+const newDeckView = ({ navigation, dispatch  }) => {
+  const [title, setTitle] = React.useState('');
+
+  const onSubmitHandler = ( title ) => {
+    dispatch(addDeck(title))
+    navigation.navigate('Decks')
+  }
+
   return(
     <View style={{top: 0 }}>
       
@@ -14,10 +21,10 @@ const newDeckView = ({ navigation }) => {
           <Text style={styles.inputHeader}>Enter a deck title:</Text>
           <TextInput
             style={styles.userInput}
-            onChangeText={text => onChangeText(text)}
-            value={value}
+            onChangeText={text => setTitle(text)}
+            value={title}
         />
-          <TouchableNativeFeedback onPress={() => navigation.navigate('Decks')}> 
+          <TouchableNativeFeedback onPress={() => onSubmitHandler(title)}> 
               <View style={styles.submitButton}>
                 <Text style={{color: 'white'}}>Sumbit</Text>
               </View>
@@ -81,4 +88,6 @@ const styles = StyleSheet.create({
   }
 })
 
-export default newDeckView;
+
+
+export default connect(null, null)(newDeckView);

@@ -1,7 +1,15 @@
 const data = [
   {
-    name: 'Deck One',
+    name: 'shazzam',
     cards: [
+        {
+          question: ` What is the Capital Of India ?`,
+          answer: `New Delhi`
+        },
+        {
+          question: ` What is the Capital Of India ?`,
+          answer: `New Delhi`
+        },
         {
           question: ` What is the Capital Of India ?`,
           answer: `New Delhi`

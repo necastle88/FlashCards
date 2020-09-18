@@ -13,6 +13,8 @@ import NewDeckView from './views/NewDeckView';
 import DeckDetailsView from './views/DeckDetailsView';
 import QuizView from './views/QuizView';
 
+//Dummy data
+
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
@@ -56,7 +58,7 @@ export default function App() {
   }
 
   return (
-    <Provider store={configureStore(null)}>
+    <Provider store={configureStore()}>
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name='Mobile Flash Cards' children={createBottomNav} />
