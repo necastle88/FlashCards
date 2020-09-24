@@ -28,7 +28,7 @@ const DeckDetails = ({ navigation, dispatch }) => {
       answer
     }
     dispatch(addFlashcard(flashCard, cardId));
-    setIsAddQuestionVisible(false)
+    setIsAddQuestionVisible(false);
   };
 
  
@@ -175,4 +175,10 @@ const styles = StyleSheet.create({
   },
 });
 
-export default connect(null, null)(DeckDetails);
+const mapStateToProps = (state) => {
+  return {
+    state
+  }
+}
+
+export default connect(null, mapStateToProps)(DeckDetails);
