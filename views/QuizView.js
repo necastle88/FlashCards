@@ -10,8 +10,8 @@ const QuizView = ({ navigation }) => {
   })
 
   const route = useRoute();
- /*  const cards = route.params.deckcards;
-  const cardsLength = cards.length; */
+  const cards = route.params.deckcards;
+  const cardsLength = cards.length; 
   return(
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>{`0/${cardsLength}`}</Text>

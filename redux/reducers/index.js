@@ -1,4 +1,4 @@
-import { ADD_DECK, DELETE_DECK } from '../actions/index'; 
+import { ADD_DECK, DELETE_DECK, ADD_FLASHCARD } from '../actions/index'; 
 import { combineReducers } from 'redux'
 
 const initialState = {
@@ -26,11 +26,29 @@ const initialState = {
           answer: `New Delhi`
         }
       ]
-    }]
+    },
+  {
+    name: 'deck with 3',
+    cards: [
+      {
+        question: ` What is the Capital Of India ?`,
+        answer: `New Delhi`
+      },
+      {
+        question: ` What is the Capital Of India ?`,
+        answer: `New Delhi`
+      },
+      {
+        question: ` What is the Capital Of India ?`,
+        answer: `New Delhi`
+      },
+    ]
+  }
+  
+  ]
 }
 
 const addDeckReducer = (state = initialState, action) => {
-  console.log(action.type)
   switch (action.type) {
     case ADD_DECK:
       return Object.assign({}, state, {
@@ -41,6 +59,21 @@ const addDeckReducer = (state = initialState, action) => {
           ...state,
           flashCards: state.flashCards.filter((item, index) => index !== action.payload)
         }
+      case ADD_FLASHCARD : 
+      return state.flashCards.map((item, index) => {
+        if(index === action.payload.index) {
+          return {
+            ...item,
+          cards: Object.assign({}, item, {
+            cards: [action.payload.flashCard]
+          })          
+          }
+        }
+    
+        // Leave every other item unchanged
+        return item;
+      });
+
     default:
       return state;
   }
@@ -51,3 +84,11 @@ const rootReducer = combineReducers({
 })
 
 export default rootReducer;
+
+/* flashCards: [{
+  name: 'Vic Henry',
+  cards: [
+    {
+      question: ` What is the Capital Of India ?`,
+      answer: `New Delhi`
+    }, */
