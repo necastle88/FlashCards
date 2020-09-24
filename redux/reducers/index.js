@@ -61,17 +61,14 @@ const addDeckReducer = (state = initialState, action) => {
         }
       case ADD_FLASHCARD : 
       return state.flashCards.map((item, index) => {
-        if(index === action.payload.index) {
-          return {
-            ...item,
-          cards: Object.assign({}, item, {
-            cards: [action.payload.flashCard]
-          })          
-          }
+        if(index !== action.payload.index) {
+          // Leave every other item unchanged
+          return item
         }
-    
-        // Leave every other item unchanged
-        return item;
+        return {
+         ...item,
+            cards: [...item.cards, action.payload.flashCard]
+        }
       });
 
     default:

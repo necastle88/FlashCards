@@ -30,7 +30,7 @@ export const addFlashcard = (flashCard, cardId) => {
   return {
     type: ADD_FLASHCARD,
     payload: { 
-      flashCard: flashCard,
+      flashCard,
       index: cardId 
     }
   }

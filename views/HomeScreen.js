@@ -5,7 +5,11 @@ import { connect } from 'react-redux';
 
 const HomeScreen = ({ state }) => {
   const data = Object.values(state.addDeckReducer.flashCards)
-  console.log('###############'+data+'##############')
+    console.log(state.addDeckReducer.flashCards)
+  if(!data) {
+    data = []
+    return data
+  } 
 
   return(
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-start', marginTop: 10 }}>
