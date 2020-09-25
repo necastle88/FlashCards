@@ -25,7 +25,6 @@ export const deleteDeck = index => {
   }
 }
 
-// Flash card payload object looks like { question: `text`, answer: `text` },
 export const addFlashcard = (flashCard, cardId) => {
   return {
     type: ADD_FLASHCARD,

@@ -12,23 +12,33 @@ import { connect } from "react-redux";
 import { addFlashcard } from '../redux/actions/index';
 import Header from "../components/Header";
 
-const DeckDetails = ({ navigation, dispatch }) => {
+const DeckDetails = ({ navigation, dispatch, state }) => {
+  
   const [isAddQuestionVisible, setIsAddQuestionVisible] = React.useState(false);
   const [question, setQuestion] = React.useState('');
   const [answer, setAnswer] = React.useState('');
+  const [checkFields, setCheckFields] = React.useState(false)
 
   const route = useRoute();
   const cardId = route.params.cardId;
 
-
+  let cardLength = state.addDeckReducer.flashCards[cardId].cards.length
 
   const addFlashCardHandler = () => {
     const flashCard = {
       question,
       answer
     }
-    dispatch(addFlashcard(flashCard, cardId));
-    setIsAddQuestionVisible(false);
+    if(answer && question) {
+      dispatch(addFlashcard(flashCard, cardId));
+      setQuestion('');
+      setAnswer('');
+      setCheckFields(false)
+      setIsAddQuestionVisible(false);
+    } else {
+      setCheckFields(true)
+    }
+    
   };
 
  
@@ -38,7 +48,7 @@ const DeckDetails = ({ navigation, dispatch }) => {
         <Header text={route.params.deckName} />
         <Text
           style={styles.numberOfQuestionsText}
-        >{`${route.params.deckCards.length} cards`}</Text>
+        >{`${cardLength} cards`}</Text>
         {!isAddQuestionVisible ? (
           <View
             style={{ flexDirection: "row", justifyContent: "space-evenly"}}
@@ -48,7 +58,7 @@ const DeckDetails = ({ navigation, dispatch }) => {
             >
               <View style={{
                 height: 45,
-                width: `${route.params.deckCards.length > 0  ? '42%' : '88%'}`,
+                width: `${cardLength > 0  ? '42%' : '88%'}`,
                 fontSize: 60,
                 color: "white",
                 backgroundColor: "#116466",
@@ -63,12 +73,13 @@ const DeckDetails = ({ navigation, dispatch }) => {
                 <Text style={{color: "white"}}>Add Question</Text>
               </View>
             </TouchableNativeFeedback>
-            {route.params.deckCards.length > 0 
+            {cardLength > 0 
               ? 
             <TouchableNativeFeedback
               onPress={() =>
                 navigation.navigate("Quiz", {
-                  deckcards: route.params.deckCards,
+                  deckCards: cardLength,
+                  cardID: cardId
                 })
               }
             >
@@ -94,6 +105,7 @@ const DeckDetails = ({ navigation, dispatch }) => {
               onChangeText={answer => setAnswer(answer)}
               value={answer}
             />
+            {checkFields ? <Text style={{color: '#c80815'}}>Please Fill out all fields</Text> : null}
             <TouchableNativeFeedback
               onPress={() => addFlashCardHandler()}
             >
@@ -181,4 +193,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(null, mapStateToProps)(DeckDetails);
+export default connect(mapStateToProps)(DeckDetails);
