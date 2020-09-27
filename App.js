@@ -2,7 +2,8 @@ import 'react-native-gesture-handler';
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { Provider } from 'react-redux';
-import configureStore from './redux/configStore';
+import {store, persistor} from './redux/configStore';
+import { PersistGate } from 'redux-persist/integration/react'
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -58,7 +59,8 @@ export default function App() {
   }
 
   return (
-    <Provider store={configureStore()}>
+    <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name='Mobile Flash Cards' children={createBottomNav} />
@@ -66,6 +68,7 @@ export default function App() {
           <Stack.Screen name='Quiz' component={QuizView} />
         </Stack.Navigator>
       </NavigationContainer>
+      </PersistGate>
     </Provider>
   );
 }

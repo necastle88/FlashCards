@@ -3,48 +3,7 @@ import { combineReducers } from "redux";
 
 const initialState = {
   flashCards: [
-    {
-      name: "Vic Henry",
-      cards: [
-        {
-          question: `1 What is the Capital Of India ?`,
-          answer: `1 New Delhi`,
-        },
-        {
-          question: `2 What is the Capital Of India ?`,
-          answer: `2New Delhi`,
-        },
-        {
-          question: `3 What is the Capital Of India ?`,
-          answer: `3New Delhi`,
-        },
-        {
-          question: `4 What is the Capital Of India ?`,
-          answer: `4 New Delhi`,
-        },
-        {
-          question: `5 What is the Capital Of India ?`,
-          answer: `5 New Delhi`,
-        },
-      ],
-    },
-    {
-      name: "deck with 3",
-      cards: [
-        {
-          question: `D3 1 What is the Capital Of India ?`,
-          answer: `D3 1 New Delhi`,
-        },
-        {
-          question: `D3 2 What is the Capital Of India ?`,
-          answer: `D3 2 New Delhi`,
-        },
-        {
-          question: `D2 3 What is the Capital Of India ?`,
-          answer: `D3 3 New Delhi`,
-        },
-      ],
-    },
+   
   ],
 };
 

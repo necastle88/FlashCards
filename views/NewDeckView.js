@@ -36,7 +36,7 @@ const newDeckView = ({ navigation, dispatch }) => {
             onChangeText={(text) => setTitle(text)}
             value={title}
           />
-          {checkFields ? <Text style={{color: '#c80815', marginBottom: -10 }}>Please Fill out all fields</Text> : null}
+          {checkFields ? <Text style={{color: '#c80815', marginBottom: -10 }}>Please enter a deck title</Text> : null}
           <TouchableNativeFeedback onPress={() => onSubmitHandler(title)}>
             <View style={styles.submitButton}>
               <Text style={{ color: "white" }}>Sumbit</Text>

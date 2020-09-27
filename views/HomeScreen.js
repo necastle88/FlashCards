@@ -9,8 +9,8 @@ const HomeScreen = ({ state }) => {
   return(
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-start', marginTop: 10 }}>
       <Text style={styles.cardCountText}>{`${data.length === 1 ? `${data.length} Deck` : `${data.length} Decks`}`}</Text>
-      {state.flashCards === null ? 
-        <Text>Click add from below to create a new deck</Text>
+      {!data.length ? 
+        <Text style={styles.cardCountText}>Press add from below to create a new deck</Text>
         : data.map((deck, index) => {
         return <Deck key={`${deck.name}_${index}`} cardTitle={deck.name} numberOfCards={deck.cards.length} cards={deck.cards} cardId={index}/>
       })

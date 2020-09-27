@@ -1,19 +1,18 @@
-import { applyMiddleware, compose, createStore } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
 import thunkMiddleware from 'redux-thunk';
-
+import AsyncStorage from '@react-native-community/async-storage'
+import { persistStore, persistReducer } from 'redux-persist'
 import rootReducer from './reducers/index';
 
-export default function configureStore() {
-  const middlewares = [thunkMiddleware]
-  const middlewareEnhancer = applyMiddleware(...middlewares)
-
-  const enhancers = [middlewareEnhancer]
-  const composedEnhancers = compose(...enhancers)
-
-  const store = createStore(rootReducer, composedEnhancers)
-  if (process.env.NODE_ENV !== 'production' && module.hot) {
-    module.hot.accept('./reducers', () => store.replaceReducer(rootReducer))
-  }
-
-  return store
+const persistConfig = {
+  key: 'root',
+  storage: AsyncStorage,
 }
+
+const persistedReducer = persistReducer(persistConfig, rootReducer)
+
+const middlewares = [thunkMiddleware]
+
+export const store = createStore(persistedReducer, applyMiddleware(...middlewares))
+export const persistor = persistStore(store)
+
