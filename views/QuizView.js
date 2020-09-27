@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View, Button, TouchableOpacity } from "react-native";
 import { connect } from "react-redux";
 import { useRoute } from "@react-navigation/native";
+import QuizCompletion from '../components/QuizCompletion';
 
 const QuizView = ({ navigation, state }) => {
   const [isAnswerVisible, setIsAnswerVisible] = React.useState(false);
@@ -38,47 +39,45 @@ const QuizView = ({ navigation, state }) => {
 
   return quizQuestionCount < cards ? (
     <View style={styles.cardContainer}>
-      <Text>{`${quizQuestionCount + 1}/${cards}`}</Text>
-      <Text>{flashcards[quizQuestionCount].question}</Text>
+      <View style={{flexDirection: 'row', justifyContent:'space-between', alignItems: 'center'}}>
+        <Text style={styles.numberOfQuestions}>{`${
+          quizQuestionCount + 1
+        }/${cards}`}</Text>
+        <TouchableOpacity onPress={() => setIsAnswerVisible(true)}>
+          {!isAnswerVisible ? <Text style={styles.answerText}>Show Answer</Text> : null}
+        </TouchableOpacity>
+        {isAnswerVisible ? (
+          <Text style={styles.answerText} >{flashcards[quizQuestionCount].answer}</Text>
+        ) : null}
+      </View>
 
-      <Text></Text>
-      <TouchableOpacity onPress={() => setIsAnswerVisible(true)}>
-        {!isAnswerVisible ? <Text>Check your answer</Text> : null}
-      </TouchableOpacity>
-      {isAnswerVisible ? (
-        <Text>{flashcards[quizQuestionCount].answer}</Text>
-      ) : null}
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => handleCorrectOnpress()}
-      >
-        <Text>Correct</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => handleIcorrectOnpress()}
-      >
-        <Text style={styles.buttonText}>Incorrect</Text>
-      </TouchableOpacity>
+      <Text style={styles.flashcardQuestion}>
+        {flashcards[quizQuestionCount].question}
+      </Text>
+    
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity
+          style={styles.correctButton}
+          onPress={() => handleCorrectOnpress()}
+        >
+          <Text style={styles.buttonText}>Correct</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => handleIcorrectOnpress()}
+        >
+          <Text style={styles.buttonText}>Incorrect</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   ) : (
-    <View>
-      <Text>Complete Menu</Text>
-      <Text>{`${(points / cards).toFixed(2) * 100}`}</Text>
-      <Text>Percent</Text>
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => handleQuizResetOnpress()}
-      >
-        <Text>Reset</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => handleGoToDecksOnpress()}
-      >
-        <Text style={styles.buttonText}>Decks</Text>
-      </TouchableOpacity>
-    </View>
+    /*complete quiz component */
+    <QuizCompletion 
+      quizReset={handleQuizResetOnpress} 
+      toHome={handleGoToDecksOnpress} 
+      points={points}
+      cards={cards}
+    />
   );
 };
 
@@ -87,7 +86,6 @@ const styles = StyleSheet.create({
     marginTop: 40,
     marginLeft: 22,
     width: 315,
-    height: 500,
     justifyContent: "center",
     borderRadius: 10,
     backgroundColor: "white",
@@ -109,7 +107,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginTop: 13,
-    marginBottom: 20,
+    marginBottom: 10,
   },
   IncorrectButton: {
     height: 45,
@@ -122,11 +120,47 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginTop: 13,
-    marginBottom: 20,
+  },
+  correctButton: {
+    height: 45,
+    width: "42%",
+    fontSize: 60,
+    backgroundColor: "#116466",
+    borderWidth: 1,
+    borderColor: "#116466",
+    borderRadius: 7,
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 13,
   },
   buttonText: {
     color: "white",
     fontSize: 14,
+  },
+  buttonContainer: {
+    flexDirection: "row",
+    width: "100%",
+    justifyContent: "space-between",
+    marginTop: 10,
+  },
+  numberOfQuestions: {
+    fontSize: 14,
+    fontWeight: "500",
+    color: "#2C3531",
+    opacity: 0.9,
+  },
+  answerText: {
+    fontSize: 14,
+    fontWeight: "500",
+    color: "#2C3531",
+    opacity: 0.7,
+  },
+  flashcardQuestion: {
+    fontSize: 18,
+    fontWeight: "500",
+    color: "#2C3531",
+    width: "100%",
+    marginTop: 18,
   },
 });
 
