@@ -65,7 +65,7 @@ const Deck = ({ cardTitle, numberOfCards, cardId, cards }) => {
 const styles = StyleSheet.create({
   cardBackground: {
     flexDirection: "row",
-    width: 330,
+    width: '92%',
     height: 80,
     borderRadius: 4,
     backgroundColor: "white",

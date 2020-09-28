@@ -31,8 +31,8 @@ const QuizCompletion = ({points, quizReset, toHome, cards }) => {
 const styles = StyleSheet.create({
   cardContainer: {
     marginTop: 40,
-    marginLeft: 22,
-    width: 315,
+    marginHorizontal: '4%',
+    width: '92%',
     justifyContent: "center",
     borderRadius: 10,
     backgroundColor: "white",

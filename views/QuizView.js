@@ -71,7 +71,6 @@ const QuizView = ({ navigation, state }) => {
       </View>
     </View>
   ) : (
-    /*complete quiz component */
     <QuizCompletion 
       quizReset={handleQuizResetOnpress} 
       toHome={handleGoToDecksOnpress} 
@@ -84,8 +83,8 @@ const QuizView = ({ navigation, state }) => {
 const styles = StyleSheet.create({
   cardContainer: {
     marginTop: 40,
-    marginLeft: 22,
-    width: 315,
+    marginHorizontal: '4%',
+    width: '92%',
     justifyContent: "center",
     borderRadius: 10,
     backgroundColor: "white",

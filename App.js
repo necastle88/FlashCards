@@ -20,8 +20,7 @@ const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
 export default function App() {
-  
-
+ 
   const createBottomNav = () => {
     return (
     <Tab.Navigator

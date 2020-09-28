@@ -92,7 +92,7 @@ const DeckDetails = ({ navigation, dispatch, state }) => {
           </View>
         ) : null}
         {isAddQuestionVisible ? (
-          <View style={{ width: 300, alignSelf: "center" }}>
+          <View style={{ width: '92%', alignSelf: "center" }}>
             <Text style={styles.inputHeader}>Question:</Text>
             <TextInput 
               style={styles.userInput} 
@@ -122,11 +122,11 @@ const DeckDetails = ({ navigation, dispatch, state }) => {
 
 const styles = StyleSheet.create({
   cardContainer: {
-    marginTop: 20,
+    marginTop: 30,
     marginLeft: 16,
     marginRight: 16,
-    width: 330,
-    justifyContent: "center",
+    width: '92%',
+    justifyContent: "flex-start",
     borderRadius: 10,
     backgroundColor: "white",
     shadowColor: "#000",
@@ -147,7 +147,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginTop: 13,
-    marginBottom: 20,
+    marginBottom: 30,
   },
   startQuizBtn: {
     height: 45,

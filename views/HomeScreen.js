@@ -22,7 +22,7 @@ const HomeScreen = ({ state }) => {
 const styles = StyleSheet.create({
   cardCountText: {
     alignSelf: 'flex-start', 
-      marginLeft: 16,
+      marginLeft: '5%',
       marginBottom: 5,
       fontSize: 14,
       color: 'black',
