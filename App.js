@@ -1,5 +1,5 @@
 import 'react-native-gesture-handler';
-import React from 'react';
+import React, {useEffect} from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { Provider } from 'react-redux';
 import {store, persistor} from './redux/configStore';
@@ -8,19 +8,23 @@ import { PersistGate } from 'redux-persist/integration/react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import { MaterialCommunityIcons } from '@expo/vector-icons'; 
-
+import { setLocalNotification, clearLocalNotification } from './helpers';
+ 
 import HomeScreen from './views/HomeScreen';
 import NewDeckView from './views/NewDeckView';
 import DeckDetailsView from './views/DeckDetailsView';
 import QuizView from './views/QuizView';
 
-//Dummy data
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
 export default function App() {
- 
+
+  useEffect(() => {
+    setLocalNotification()
+  }, []);
+
   const createBottomNav = () => {
     return (
     <Tab.Navigator
