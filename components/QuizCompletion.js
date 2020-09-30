@@ -1,29 +1,28 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { setLocalNotification, clearLocalNotification } from '../helpers';
 
-const QuizCompletion = ({points, quizReset, toHome, cards }) => {
 
-  return (
+const QuizCompletion = ({ points, quizReset, toHome, cards }) => {
   
-    /*complete quiz component */
+  useEffect(() => {
+    clearLocalNotification().then(setLocalNotification)
+  }, []);
+  
+  return (
     <View style={styles.cardContainer}>
-    <Text style={styles.completeText}>Quiz Complete</Text>
-    <Text style={styles.precentageText}>{`${(points / cards).toFixed(2) * 100}%`}</Text>
+      <Text style={styles.completeText}>Quiz Complete</Text>
+      <Text style={styles.precentageText}>{`${
+        (points / cards).toFixed(2) * 100
+      }%`}</Text>
       <View style={styles.buttonContainer}>
-      <TouchableOpacity
-      style={styles.button}
-      onPress={() => quizReset()}
-    >
-      <Text style={styles.buttonText}>Try Again</Text>
-    </TouchableOpacity>
-    <TouchableOpacity
-      style={styles.button}
-      onPress={() => toHome()}
-    >
-      <Text style={styles.buttonText}>Decks</Text>
-    </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={() => quizReset()}>
+          <Text style={styles.buttonText}>Try Again</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={() => toHome()}>
+          <Text style={styles.buttonText}>Decks</Text>
+        </TouchableOpacity>
       </View>
-      
     </View>
   );
 };
@@ -31,8 +30,8 @@ const QuizCompletion = ({points, quizReset, toHome, cards }) => {
 const styles = StyleSheet.create({
   cardContainer: {
     marginTop: 40,
-    marginHorizontal: '4%',
-    width: '92%',
+    marginHorizontal: "4%",
+    width: "92%",
     justifyContent: "center",
     borderRadius: 10,
     backgroundColor: "white",
@@ -76,14 +75,13 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "500",
     color: "#2C3531",
-    
   },
   precentageText: {
     fontSize: 64,
     fontWeight: "500",
     color: "#2C3531",
     width: "100%",
-    opacity: .8
+    opacity: 0.8,
   },
 });
 
